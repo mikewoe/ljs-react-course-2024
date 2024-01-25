@@ -1,4 +1,6 @@
-export const restaurants = [
+import {TRestaurant} from "../types/types.ts";
+
+export const restaurants: TRestaurant[] = [
     {
         id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
         name: "Dishoom",
