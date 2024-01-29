@@ -1,11 +1,11 @@
 export type TRestaurant = {
     id: string,
     name: string,
-    menu: TMenu[]
+    menu: TDish[]
     reviews: TReview[]
 }
 
-export type TMenu = {
+export type TDish = {
     id: string,
     name: string,
     price: number,
