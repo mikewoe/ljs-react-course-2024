@@ -1,0 +1,29 @@
+.root {
+  margin: 0.5em;
+}
+
+.restaurantsList > div {
+  padding: 0.5em;
+}
+
+.restaurantsList > div:first-child {
+  padding-top: 0.87em;
+}
+
+.restaurantsList {
+  width: auto;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  padding-top: 0.5em;
+  height: 85vh;
+}
+
+.restaurantsPanel {
+  display: flex;
+  justify-content: left;
+}
+
+.selectedView {
+  width: 50%;
+  min-width: fit-content;
+}

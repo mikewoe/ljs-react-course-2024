@@ -1,13 +1,11 @@
 import {restaurants} from "./constants/mock.ts";
 import {Layout} from "./components/layout/component.tsx";
-import {Restaurant} from "./components/restaraunt/component.tsx";
+import {RestaurantsView} from "./components/restaraunts-view/component.tsx";
 
 export const App = () => {
     return (
         <Layout>
-            <h1>Рестораны</h1>
-
-            {restaurants.map(restaurant => <Restaurant restaurant={restaurant}/>)}
+            <RestaurantsView restaurants={restaurants}/>
         </Layout>
     )
 }
