@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  padding: 1em;
+}
+
+.form > div {
+  padding: 0.5em;
+}
+
+.formButton {
+  float: right;
+}

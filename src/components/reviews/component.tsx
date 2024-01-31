@@ -1,6 +1,7 @@
 import {TReview} from "../../types/types.ts";
 import {Review} from "../review/review.tsx";
 import styles from "./styles.module.scss"
+import {ReviewForm} from "../review-form/component.tsx";
 
 export const Reviews = ({reviews}: {reviews: TReview[]}) => {
     return (
@@ -12,6 +13,8 @@ export const Reviews = ({reviews}: {reviews: TReview[]}) => {
                     <li><Review review={review}/></li>
                 ))}
             </ul>
+
+            <ReviewForm/>
         </div>
     );
 }
