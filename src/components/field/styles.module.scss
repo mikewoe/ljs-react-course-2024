@@ -1,0 +1,10 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+
+.field > input {
+  border: 1px solid grey;
+  border-radius: 0.25rem;
+}
