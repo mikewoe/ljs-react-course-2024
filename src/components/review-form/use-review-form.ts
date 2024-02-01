@@ -35,21 +35,21 @@ export const useReviewForm = (initialValue = INITIAL_VALUE) => {
         (event: React.ChangeEvent<HTMLInputElement>) => {
             dispatch({type: 'setName', payload: event.target.value})
         },
-        [form.name]
+        []
     );
 
     const setText = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             dispatch({type: 'setText', payload: event.target.value})
         },
-        [form.text]
+        []
     );
 
     const setRating = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) =>{
             dispatch({type: 'setRating', payload: event.target.value})
         },
-        [form.rating]
+        []
     );
 
     return {
