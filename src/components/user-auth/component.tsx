@@ -8,8 +8,6 @@ export const UserAuth = ({className} : {
 }) => {
     const {user, login, logout} = useContext(UserContext);
 
-    console.log(user);
-
     if (!user.isAuth) {
         return (
             <div>

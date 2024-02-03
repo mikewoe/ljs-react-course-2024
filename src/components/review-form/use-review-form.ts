@@ -3,7 +3,7 @@ import React, {useCallback, useReducer} from "react";
 const INITIAL_VALUE = {
     name: '',
     text: '',
-    rating: 1
+    rating: 5
 }
 
 const reducer = (state : {name: string, text: string, rating: number}, action: {type: string, payload: any}) => {
@@ -32,8 +32,8 @@ export const useReviewForm = (initialValue = INITIAL_VALUE) => {
     const [form, dispatch] = useReducer(reducer, initialValue);
 
     const setName = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-            dispatch({type: 'setName', payload: event.target.value})
+        (userName: string) => {
+            dispatch({type: 'setName', payload: userName})
         },
         []
     );
