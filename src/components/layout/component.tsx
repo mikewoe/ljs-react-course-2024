@@ -8,8 +8,10 @@ export const Layout = ({children}: {children: ReactNode}) => {
     const {user} = useContext(UserContext);
     const [currentUser, setCurrentUser] = useState(user);
 
-    const login = useCallback((user: TUserCreds) => setCurrentUser(user), [])
-    const logout = useCallback(() => setCurrentUser(EMPTY_LOGIN), [])
+    const login = useCallback((user: TUserCreds) => setCurrentUser(user), []);
+    const logout = useCallback(() => setCurrentUser(EMPTY_LOGIN), []);
+
+    console.log('currentUser: ', currentUser);
 
     return (
         <UserContext.Provider value={{user: currentUser, login, logout}}>
