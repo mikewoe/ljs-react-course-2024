@@ -1,6 +1,8 @@
 .root {
   background-color: black;
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header {

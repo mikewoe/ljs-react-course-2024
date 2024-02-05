@@ -1,7 +1,14 @@
 .root {
-  border: 1px solid slategray;
+  border: 2px solid slategray;
   border-radius: 0.5rem;
+  box-shadow: rgba(100, 100, 111, 0.3) 0.075rem 0.075rem 0.05rem 0;
   cursor: pointer;
+}
+
+.root:disabled {
+  //background-color: lightgrey;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .primary {
