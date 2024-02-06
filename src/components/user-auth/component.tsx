@@ -1,5 +1,5 @@
 import {Button} from "../button/component.tsx";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "../../contexts/user.tsx";
 import classNames from "classnames";
 import {createPortal} from "react-dom";
@@ -10,11 +10,18 @@ export const UserAuth = ({className} : {
 }) => {
     const {user, logout} = useContext(UserContext);
     const [showModal, setShowModal] = useState(false);
+    const modalContainer = useRef();
+
+    useEffect(() => {
+        // @ts-ignore
+        modalContainer.current = document.getElementById('modal-container');
+        console.log(modalContainer.current);
+    }, []);
 
     if (user.isAuth) {
         return (
             <div>
-                {user.userName}
+                <span>{user.userName}</span>
 
                 <Button
                     className={classNames(className)}
@@ -37,11 +44,11 @@ export const UserAuth = ({className} : {
                 Login
             </Button>
 
-            {showModal && createPortal(
+            {showModal && modalContainer.current && createPortal(
                 <LoginModal
                     onClose={() => setShowModal(false)}
                 />,
-                document.body
+                modalContainer.current
             )}
         </div>
     )

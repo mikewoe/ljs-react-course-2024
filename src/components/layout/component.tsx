@@ -11,14 +11,15 @@ export const Layout = ({children}: {children: ReactNode}) => {
     const login = useCallback((user: TUserCreds) => setCurrentUser(user), []);
     const logout = useCallback(() => setCurrentUser(EMPTY_LOGIN), []);
 
-    console.log('currentUser: ', currentUser);
-
     return (
         <UserContext.Provider value={{user: currentUser, login, logout}}>
-            <div className={styles.root}>
-                <Header />
-                <div>{children}</div>
-                <Footer/>
+            <div>
+                <div className={styles.root}>
+                    <Header />
+                    <div>{children}</div>
+                    <Footer/>
+                </div>
+                <div id="modal-container"/>
             </div>
         </UserContext.Provider>
     );
