@@ -13,9 +13,9 @@ export const UserAuth = ({className} : {
     const modalContainer = useRef();
 
     useEffect(() => {
-        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         modalContainer.current = document.getElementById('modal-container');
-        console.log(modalContainer.current);
     }, []);
 
     if (user.isAuth) {

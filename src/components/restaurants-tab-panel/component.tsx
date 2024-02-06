@@ -1,19 +1,19 @@
 import styles from "../restaraunts-view/styles.module.scss";
 import {RestaurantTab} from "../restaurant-tab/component.tsx";
 import {ButtonViewType} from "../button/constants.ts";
-import {TRestaurant} from "../../types/types.ts";
+import React from "react";
 
-export const RestaurantsTabPanel = ({restaurants, selected, setSelected} : {
-    restaurants: TRestaurant[],
-    selected: number,
-    setSelected: (index:number) => void
+export const RestaurantsTabPanel = ({restaurantIds, selected, onSelect} : {
+    restaurantIds: string[],
+    selected: string,
+    onSelect: React.Dispatch<React.SetStateAction<string>>
 }) => {
     return <div className={styles.restaurantsList}>
-        {restaurants.map((restaurant, index) =>
+        {restaurantIds.map((restaurantId) =>
             <RestaurantTab
-                viewType={index === selected ? ButtonViewType.primary : ButtonViewType.secondary}
-                restaurant={restaurant}
-                onChange={() => setSelected(index)}/>
+                viewType={restaurantId === selected ? ButtonViewType.primary : ButtonViewType.secondary}
+                restaurantId={restaurantId}
+                onChange={() => onSelect(restaurantId)}/>
         )}
     </div>
 }

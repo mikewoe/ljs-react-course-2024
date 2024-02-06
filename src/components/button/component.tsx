@@ -18,7 +18,7 @@ export const Button = ({onClick, children, className, size = Size.m, viewType = 
     className?: string,
     size?: string,
     viewType?: string,
-    disabled?: boolean
+    disabled?: boolean,
 }) => {
     return (
         <button

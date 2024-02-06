@@ -1,14 +1,19 @@
 import {Menu} from "../menu/component.tsx";
 import {Reviews} from "../reviews/component.tsx";
-import {TRestaurant} from "../../types/types.ts";
 import styles from "./styles.module.scss"
+import {useSelector} from "react-redux";
+import {TState} from "../../redux";
+import {restaurantSlice} from "../../redux/entities/restaurants";
 
-export const Restaurant = ({restaurant}: {restaurant: TRestaurant}) => {
+export const Restaurant = ({restaurantId} : {restaurantId: string}) => {
+    const restaurant = useSelector((state: TState) =>
+        restaurantSlice.selectors.selectById(state, restaurantId));
+
     return (
-        <div className={styles.root}>
+        <div className={styles.root} key={restaurantId}>
             <h2>{restaurant.name}</h2>
-            <Menu menu={restaurant.menu}/>
-            <Reviews reviews={restaurant.reviews}/>
+            <Menu dishIds={restaurant.dishIds}/>
+            <Reviews reviewIds={restaurant.reviewIds}/>
         </div>
     );
 }
