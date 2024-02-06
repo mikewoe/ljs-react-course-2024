@@ -11,6 +11,7 @@ export const RestaurantsTabPanel = ({restaurantIds, selected, onSelect} : {
     return <div className={styles.restaurantsList}>
         {restaurantIds.map((restaurantId) =>
             <RestaurantTab
+                key={restaurantId}
                 viewType={restaurantId === selected ? ButtonViewType.primary : ButtonViewType.secondary}
                 restaurantId={restaurantId}
                 onChange={() => onSelect(restaurantId)}/>

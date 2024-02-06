@@ -13,7 +13,7 @@ export const Reviews = ({reviewIds}: {reviewIds: string[]}) => {
 
             <ul>
                 {reviewIds.map(reviewId => (
-                    <li><Review reviewId={reviewId}/></li>
+                    <li key={reviewId}><Review reviewId={reviewId}/></li>
                 ))}
             </ul>
 

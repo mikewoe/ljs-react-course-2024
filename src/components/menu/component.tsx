@@ -8,7 +8,7 @@ export const Menu = ({dishIds}: {dishIds: string[]}) => {
 
             <div>
                 {dishIds.map(dishId => (
-                    <Dish dishId={dishId}/>
+                    <Dish key={dishId} dishId={dishId}/>
                 ))}
             </div>
         </div>
