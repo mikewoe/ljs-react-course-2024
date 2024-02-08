@@ -9,8 +9,7 @@ export const EMPTY_LOGIN = {
 export type TUserCreds = typeof EMPTY_LOGIN
 
 const LOGIN_API = {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    login: (userCreds:TUserCreds) => {},
+    login: (userCreds:TUserCreds) => {console.log(userCreds)},
     logout: () => {}
 }
 

@@ -1,9 +1,15 @@
-import {TReview} from "../../types/types.ts";
+import {useSelector} from "react-redux";
+import {reviewSlice} from "../../redux/entities/reviews";
+import {TState} from "../../redux";
+import {userSlice} from "../../redux/entities/users";
 
-export const Review = ({review}: {review: TReview}) => {
+export const Review = ({reviewId}: {reviewId: string}) => {
+    const review = useSelector((state: TState) => reviewSlice.selectors.selectById(state, reviewId));
+    const user = useSelector((state: TState) => userSlice.selectors.selectById(state, review.userId));
+
     return (
-        <div>
-            {`${review.user}: ${review.text} - ${review.rating}`}
+        <div key={reviewId}>
+            {`${user.name}: ${review.text} - ${review.rating}`}
         </div>
     )
 }

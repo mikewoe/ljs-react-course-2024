@@ -13,19 +13,31 @@ export const LoginModal = ({onClose}: {
     const {form, setUserName, setMail, isFormValidated} = useLoginForm();
 
     return (
-        <div className={styles.root}>
-            <div className={styles.form}>
-                <Field fieldName="userName" labelName="Имя пользователя" onChange={setUserName} value={form.userName}/>
-                <Field fieldName="mail" type="Адрес электронной почты" onChange={setMail} value={form.mail}/>
-            </div>
+        <div onClick={onClose} className={styles.overlay}>
+            <div className={styles.root}>
+                <div className={styles.form}>
+                    <Field
+                        fieldName="userName"
+                        labelName="Имя пользователя"
+                        onChange={setUserName}
+                        value={form.userName}
+                    />
 
-            <div className={styles.buttonGroup}>
-                <Button viewType={ButtonViewType.secondary} onClick={onClose}>Close</Button>
-                <Button disabled={!isFormValidated()} onClick={() => {
-                    login({...form, isAuth: true});
+                    <Field
+                        fieldName="mail"
+                        type="Адрес электронной почты"
+                        onChange={setMail}
+                        value={form.mail}/>
+                </div>
 
-                    onClose();
-                }}>LogIn</Button>
+                <div className={styles.buttonGroup}>
+                    <Button viewType={ButtonViewType.secondary} onClick={onClose}>Close</Button>
+                    <Button disabled={!isFormValidated()} onClick={() => {
+                        login({...form, isAuth: true});
+
+                        onClose();
+                    }}>LogIn</Button>
+                </div>
             </div>
         </div>
     )
