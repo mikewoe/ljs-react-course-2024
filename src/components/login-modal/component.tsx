@@ -13,7 +13,8 @@ export const LoginModal = ({onClose}: {
     const {form, setUserName, setMail, isFormValidated} = useLoginForm();
 
     return (
-        <div onClick={onClose} className={styles.overlay}>
+        <div>
+            <div onClick={onClose} className={styles.overlay}/>
             <div className={styles.root}>
                 <div className={styles.form}>
                     <Field
