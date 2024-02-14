@@ -1,19 +1,19 @@
 import {Button} from "../button/component.tsx";
-import React from "react";
 import styles from "./styles.module.scss"
 
-export const Counter = ({value, onChange, max = 5, min = 0}: {
+export const Counter = ({value, max = 5, min = 0, decrement, increment}: {
     value: number,
-    onChange: React.Dispatch<React.SetStateAction<number>>,
     max?: number,
-    min?: number
+    min?: number,
+    decrement: () => void,
+    increment: () => void,
 }) => {
     return (
         <div className={styles.buttonsGroup}>
             <Button
                 className={styles.counter}
                 disabled={value <= min}
-                onClick={() => onChange(value - 1)}
+                onClick={decrement}
             >
                 -
             </Button>
@@ -23,7 +23,7 @@ export const Counter = ({value, onChange, max = 5, min = 0}: {
             <Button
                 className={styles.counter}
                 disabled={value >= max}
-                onClick={() => onChange(value + 1)}
+                onClick={increment}
             >
                 +
             </Button>
