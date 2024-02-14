@@ -13,6 +13,7 @@ export const Layout = ({children}: {children: ReactNode}) => {
                 </div>
 
                 <div id="modal-container"/>
+                <div id="popup-container" className={styles.popoverContainer}/>
             </div>
     );
 }
