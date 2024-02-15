@@ -1,8 +1,10 @@
 export type TNRestaurant = {
     id: string,
     name: string,
-    dishIds: string[]
-    reviewIds: string[]
+    description: string,
+    img: string,
+    menu: string[],
+    reviews: string[]
 }
 
 export type TNReview = {

@@ -4,9 +4,10 @@ import {dishSlice} from "./entities/dishes";
 import {reviewSlice} from "./entities/reviews";
 import {userSlice} from "./entities/users";
 import {cartSlice} from "./entities/cart";
+import {requestSlice} from "./entities/requests";
 
 const rootReducer = combineSlices(
-    restaurantSlice, dishSlice, reviewSlice, userSlice, cartSlice
+    restaurantSlice, dishSlice, reviewSlice, userSlice, cartSlice, requestSlice
 );
 
 export const store = configureStore({
