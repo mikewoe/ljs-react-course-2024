@@ -4,9 +4,10 @@ import {useState} from "react";
 import {RestaurantsTabPanel} from "../restaurants-tab-panel/component.tsx";
 import {useSelector} from "react-redux";
 import {restaurantSlice} from "../../redux/entities/restaurants";
+import {RestaurantContainer} from "../restaraunt/container.tsx";
 
 export const RestaurantsView = () => {
-    const restaurantIds = useSelector(restaurantSlice.selectors.selectIds)
+    const restaurantIds: string[] = useSelector(restaurantSlice.selectors.selectIds);
     const [currentRestaurantId, setCurrentRestaurantId] = useState(restaurantIds[0]);
 
     return (
@@ -20,7 +21,9 @@ export const RestaurantsView = () => {
                     onSelect={setCurrentRestaurantId}/>
 
                 <div className={styles.selectedView}>
-                    {currentRestaurantId && <Restaurant key={currentRestaurantId} restaurantId={currentRestaurantId}/>}
+                    {currentRestaurantId &&
+                        <RestaurantContainer key={currentRestaurantId} restaurantId={currentRestaurantId}/>
+                    }
                 </div>
             </div>
         </div>

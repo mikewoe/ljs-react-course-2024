@@ -16,3 +16,12 @@
 .navigation {
   margin-left: 0.5rem;
 }
+
+.userMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userMenu > div:not(:last-child) {
+  padding-right: 0.5rem;
+}

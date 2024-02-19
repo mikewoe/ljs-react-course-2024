@@ -4,6 +4,7 @@ import {useCallback, useContext, useState} from "react";
 import {EMPTY_LOGIN, TUserCreds, UserContext} from "./contexts/user.tsx";
 import {Provider} from "react-redux";
 import {store} from "./redux";
+import {RestaurantPage} from "./pages/restaurant-page.tsx";
 
 export const App = () => {
     const {user} = useContext(UserContext);
@@ -15,9 +16,7 @@ export const App = () => {
     return (
         <Provider store={store}>
             <UserContext.Provider value={{user: currentUser, login, logout}}>
-                <Layout>
-                    <RestaurantsView/>
-                </Layout>
+                <RestaurantPage/>
             </UserContext.Provider>
         </Provider>
     )

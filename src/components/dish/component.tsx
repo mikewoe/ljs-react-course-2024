@@ -1,16 +1,15 @@
-import {useState} from "react";
 import styles from './styles.module.scss'
 import {Counter} from "../counter/component.tsx";
-import {useSelector} from "react-redux";
-import {dishSlice} from "../../redux/entities/dishes";
-import {TState} from "../../redux";
+import {TNDish} from "../../types/types.ts";
 
-export const Dish = ({dishId} : {dishId: string}) => {
-    const [count, setCount] = useState(0);
-    const dish = useSelector((state: TState) => dishSlice.selectors.selectById(state, dishId))
-
+export const Dish = ({dish, amount, decrement, increment} : {
+    dish: TNDish,
+    amount: number,
+    decrement: () => void,
+    increment: () => void,
+}) => {
     return (
-        <div className={styles.root} key={dishId}>
+        <div className={styles.root} key={dish.id}>
             <div>
                 <div className={styles.dishName}>{dish.name}</div>
                 <div className={styles.ingredients}>({dish.ingredients.join(', ')})</div>
@@ -18,9 +17,12 @@ export const Dish = ({dishId} : {dishId: string}) => {
             </div>
 
             <div>
-                <Counter value={count} onChange={setCount}/>
+                <Counter
+                    value={amount}
+                    decrement={decrement}
+                    increment={increment}/>
 
-                <div className={styles.pricesCount}>{dish.price * count} rub.</div>
+                <div className={styles.pricesCount}>{dish.price * amount} rub.</div>
             </div>
         </div>
     )

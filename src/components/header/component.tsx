@@ -2,6 +2,7 @@ import classNames from "classnames";
 import styles from './styles.module.scss'
 import {Button} from "../button/component.tsx";
 import {UserAuth} from "../user-auth/component.tsx";
+import {CartButtonContainer} from "../cart-button/container.tsx";
 
 export const Header = ({isHighlighted = false}: {isHighlighted?: boolean}) => {
     return (
@@ -14,7 +15,10 @@ export const Header = ({isHighlighted = false}: {isHighlighted?: boolean}) => {
                 </Button>
             </div>
 
-            <UserAuth className={styles.navigation}/>
+            <div className={styles.userMenu}>
+                <CartButtonContainer/>
+                <UserAuth className={styles.navigation}/>
+            </div>
         </header>
     );
 }
