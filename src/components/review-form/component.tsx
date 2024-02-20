@@ -4,10 +4,13 @@ import {useReviewForm} from "./use-review-form.ts";
 import {Button} from "../button/component.tsx";
 import {useContext, useEffect} from "react";
 import {UserContext} from "../../contexts/user.tsx";
+import {useCreateReviewMutation} from "../../redux/services/api.ts";
 
-export const ReviewForm = () => {
+export const  ReviewForm = ({restaurantId}: {restaurantId: string}) => {
     const {user} = useContext(UserContext);
     const {form, setName, setRating, setText} = useReviewForm();
+
+    const [createReview, {isLoading}] = useCreateReviewMutation();
 
     useEffect(() => {
         if (user.isAuth) {
@@ -27,7 +30,18 @@ export const ReviewForm = () => {
                 <Field fieldName="rating" type="number" onChange={setRating} value={form.rating}/>
 
                 <div className={styles.formButton}>
-                    <Button onClick={() => console.log('form: ', form)}>Submit</Button>
+                    <Button onClick={() =>
+                        createReview({
+                            restaurantId,
+                            newReview: {
+                                user: user.userName,
+                                text: form.text,
+                                rating: form.rating
+                            }
+                        })
+                    }>
+                        Submit
+                    </Button>
                 </div>
             </div>
         </div>

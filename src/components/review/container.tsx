@@ -1,18 +1,15 @@
 import {Review} from "./component.tsx";
-import {useSelector} from "react-redux";
-import {TState} from "../../redux";
-import {reviewSlice} from "../../redux/entities/reviews";
-import {userSlice} from "../../redux/entities/users";
+import {TNReview} from "../../types/types.ts";
+import {useGetUsersQuery} from "../../redux/services/api.ts";
 
-export const ReviewController = ({reviewId}: {reviewId: string}) => {
-    const review = useSelector((state: TState) => reviewSlice.selectors.selectById(state, reviewId));
-    const user = useSelector((state: TState) => review && userSlice.selectors.selectById(state, review.userId));
+export const ReviewController = ({review}: {review: TNReview}) => {
+    const {data: users} = useGetUsersQuery();
 
-    if (!review || !user) {
+    if (!review || !users) {
         return null;
     }
 
     return (
-        <Review key={review.id} review={review} user={user}/>
+        <Review key={review.id} review={review} user={users.find(user => user.id === review.userId)}/>
     )
 }

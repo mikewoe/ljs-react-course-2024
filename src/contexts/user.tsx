@@ -1,6 +1,7 @@
 import React from "react";
 
 export const EMPTY_LOGIN = {
+    userId: '',
     userName: '',
     mail: '',
     isAuth: false

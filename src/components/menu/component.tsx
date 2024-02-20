@@ -1,15 +1,16 @@
 import styles from './styles.module.scss'
 import {DishContainer} from "../dish/container.tsx";
+import {TNDish} from "../../types/types.ts";
 
-export const Menu = ({dishIds, isLoading}: {dishIds: string[], isLoading: boolean}) => {
+export const Menu = ({dishes, isLoading, restaurantId}: {dishes: TNDish[], isLoading: boolean, restaurantId: string}) => {
     return (
         <div className={styles.root}>
             <h3>Меню</h3>
 
             { isLoading ? <div>Loading...</div> :
                 <div>
-                    {dishIds.map(dishId => (
-                        <DishContainer key={dishId} dishId={dishId}/>
+                    {dishes.map(dish => (
+                        <DishContainer key={dish.id} dishId={dish.id} restaurantId={restaurantId}/>
                     ))}
                 </div>
             }

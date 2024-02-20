@@ -1,17 +1,13 @@
 import {Button} from "../button/component.tsx";
-import {useSelector} from "react-redux";
-import {restaurantSlice} from "../../redux/entities/restaurants";
-import {TState} from "../../redux";
+import {TNRestaurant} from "../../types/types.ts";
 
-export const RestaurantTab = ({restaurantId, onChange, viewType} : {
-    restaurantId: string,
+export const RestaurantTab = ({restaurant, onChange, viewType} : {
+    restaurant: TNRestaurant,
     onChange: () => void,
     viewType: string
 }) => {
-    const restaurant = useSelector((state: TState) =>
-        restaurantSlice.selectors.selectById(state, restaurantId));
 
-    return <div key={restaurantId}>
+    return <div key={restaurant.id}>
         <Button
             viewType={viewType}
             onClick={onChange}

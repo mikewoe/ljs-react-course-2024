@@ -1,13 +1,12 @@
 import styles from "./styles.module.scss"
 import {useState} from "react";
 import {RestaurantsTabPanel} from "../restaurants-tab-panel/component.tsx";
-import {useSelector} from "react-redux";
-import {restaurantSlice} from "../../redux/entities/restaurants";
 import {RestaurantContainer} from "../restaraunt/container.tsx";
+import {useGetRestaurantsQuery} from "../../redux/services/api.ts";
 
 export const RestaurantsView = () => {
-    const restaurantIds: string[] = useSelector(restaurantSlice.selectors.selectIds);
-    const [currentRestaurantId, setCurrentRestaurantId] = useState(restaurantIds[0]);
+    const {data} = useGetRestaurantsQuery();
+    const [currentRestaurant, setCurrentRestaurant] = useState(data[0]);
 
     return (
         <div className={styles.root}>
@@ -15,13 +14,13 @@ export const RestaurantsView = () => {
 
             <div className={styles.restaurantsPanel}>
                 <RestaurantsTabPanel
-                    restaurantIds={restaurantIds}
-                    selected={currentRestaurantId}
-                    onSelect={setCurrentRestaurantId}/>
+                    restaurants={data}
+                    selected={currentRestaurant}
+                    onSelect={setCurrentRestaurant}/>
 
                 <div className={styles.selectedView}>
-                    {currentRestaurantId &&
-                        <RestaurantContainer key={currentRestaurantId} restaurantId={currentRestaurantId}/>
+                    {currentRestaurant &&
+                        <RestaurantContainer key={currentRestaurant.id} restaurantId={currentRestaurant.id}/>
                     }
                 </div>
             </div>
