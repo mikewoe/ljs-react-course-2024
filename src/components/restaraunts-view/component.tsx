@@ -1,4 +1,3 @@
-import {Restaurant} from "../restaraunt/component.tsx";
 import styles from "./styles.module.scss"
 import {useState} from "react";
 import {RestaurantsTabPanel} from "../restaurants-tab-panel/component.tsx";

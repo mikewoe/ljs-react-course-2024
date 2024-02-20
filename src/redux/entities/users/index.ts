@@ -1,7 +1,6 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {TNUser} from "../../../types/types.ts";
-import {normalizedUsers} from "../../../constants/normilized-mock.ts";
-import {createInitState, TSliceState} from "../../utils.ts";
+import {TSliceState} from "../../utils.ts";
 import {getUsers} from "./thunks/get-users.ts";
 
 export type TUserSliceState = TSliceState<TNUser>

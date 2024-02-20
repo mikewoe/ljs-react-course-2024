@@ -1,5 +1,5 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
-import {TNDish, TNRestaurant} from "../../../types/types.ts";
+import {TNRestaurant} from "../../../types/types.ts";
 import {TSliceState} from "../../utils.ts";
 import {getRestaurants} from "./thunks/get-restaurants.ts";
 

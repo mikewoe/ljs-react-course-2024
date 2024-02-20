@@ -1,7 +1,6 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {TNDish} from "../../../types/types.ts";
-import {normalizedDishes} from "../../../constants/normilized-mock.ts";
-import {createInitState, TSliceState} from "../../utils.ts";
+import {TSliceState} from "../../utils.ts";
 import {getDishesByRestaurantId} from "./thunks/get-dishes-by-restaurant-id.ts";
 
 export type TDishSliceState = TSliceState<TNDish>;
