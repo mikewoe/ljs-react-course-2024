@@ -5,8 +5,8 @@ import {RestaurantContainer} from "../restaraunt/container.tsx";
 import {useGetRestaurantsQuery} from "../../redux/services/api.ts";
 
 export const RestaurantsView = () => {
-    const {data} = useGetRestaurantsQuery();
-    const [currentRestaurant, setCurrentRestaurant] = useState(data[0]);
+    const {data: restaurants} = useGetRestaurantsQuery(undefined);
+    const [currentRestaurant, setCurrentRestaurant] = useState(restaurants[0]);
 
     return (
         <div className={styles.root}>
@@ -14,7 +14,7 @@ export const RestaurantsView = () => {
 
             <div className={styles.restaurantsPanel}>
                 <RestaurantsTabPanel
-                    restaurants={data}
+                    restaurants={restaurants}
                     selected={currentRestaurant}
                     onSelect={setCurrentRestaurant}/>
 

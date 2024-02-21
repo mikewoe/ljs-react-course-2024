@@ -52,7 +52,9 @@ export const useReviewForm = (initialValue = INITIAL_VALUE) => {
         []
     );
 
+    const isFormValidated = useCallback(() => !!form.text && !!form.rating, [form]);
+
     return {
-        form, setName, setText, setRating
+        form, setName, setText, setRating, isFormValidated
     };
 };

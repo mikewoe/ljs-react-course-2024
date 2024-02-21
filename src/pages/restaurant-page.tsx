@@ -3,8 +3,9 @@ import {RestaurantsView} from "../components/restaraunts-view/component.tsx";
 import {useGetRestaurantsQuery, useGetUsersQuery} from "../redux/services/api.ts";
 
 export const RestaurantPage = () => {
-    const {isLoading} = useGetRestaurantsQuery();
-    useGetUsersQuery();
+    const {isLoading} = useGetRestaurantsQuery(undefined);
+
+    // useGetUsersQuery(undefined);
 
     return (
         <Layout>

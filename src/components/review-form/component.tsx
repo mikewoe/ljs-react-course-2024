@@ -8,7 +8,7 @@ import {useCreateReviewMutation} from "../../redux/services/api.ts";
 
 export const  ReviewForm = ({restaurantId}: {restaurantId: string}) => {
     const {user} = useContext(UserContext);
-    const {form, setName, setRating, setText} = useReviewForm();
+    const {form, setName, setRating, setText, isFormValidated} = useReviewForm();
 
     const [createReview, {isLoading}] = useCreateReviewMutation();
 
@@ -30,16 +30,20 @@ export const  ReviewForm = ({restaurantId}: {restaurantId: string}) => {
                 <Field fieldName="rating" type="number" onChange={setRating} value={form.rating}/>
 
                 <div className={styles.formButton}>
-                    <Button onClick={() =>
-                        createReview({
-                            restaurantId,
-                            newReview: {
-                                user: user.userName,
-                                text: form.text,
-                                rating: form.rating
-                            }
-                        })
-                    }>
+                    <Button
+                        disabled={!isFormValidated()}
+                        isLoading={isLoading}
+                        onClick={() =>
+                            createReview({
+                                restaurantId,
+                                newReview: {
+                                    userId: user.userId,
+                                    user: user.userName,
+                                    text: form.text,
+                                    rating: form.rating
+                                }
+                            })}
+                    >
                         Submit
                     </Button>
                 </div>
