@@ -1,9 +1,10 @@
 import styles from "./styles.module.scss"
-import {ReviewForm} from "../review-form/component.tsx";
+import {ReviewForm} from "./parts/review-form/component.tsx";
 import {useContext} from "react";
 import {UserContext} from "../../contexts/user.tsx";
-import {ReviewController} from "../review/container.tsx";
+import {ReviewController} from "./parts/review/container.tsx";
 import {TNReview} from "../../types/types.ts";
+import {CreateReviewContainer} from "./parts/create-review/container.tsx";
 
 export const Reviews = ({reviews, isLoading, restaurantId}: {
     reviews: TNReview[],
@@ -24,11 +25,11 @@ export const Reviews = ({reviews, isLoading, restaurantId}: {
 
             <ul>
                 {reviews.map(review => (
-                    <li key={review.id}><ReviewController review={review}/></li>
+                    <li key={review.id}><ReviewController restaurantId={restaurantId} review={review}/></li>
                 ))}
             </ul>
 
-            {user.isAuth && <ReviewForm restaurantId={restaurantId}/>}
+            {user.isAuth && <CreateReviewContainer restaurantId={restaurantId}/>}
         </div>
     );
 }

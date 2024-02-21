@@ -6,13 +6,8 @@ const INITIAL_VALUE = {
     rating: 5
 }
 
-const reducer = (state : {name: string, text: string, rating: number}, action: {type: string, payload: any}) => {
+const reducer = (state : {text: string, rating: number}, action: {type: string, payload?: any}) => {
     switch (action.type) {
-        case 'setName':
-            return {
-                ...INITIAL_VALUE,
-                name: action.payload
-            };
         case 'setText':
             return {
                 ...state,
@@ -23,6 +18,10 @@ const reducer = (state : {name: string, text: string, rating: number}, action: {
                 ...state,
                 rating: action.payload
             };
+        case 'reset':
+            return {
+                ...INITIAL_VALUE
+            }
         default:
             return state;
     }
@@ -31,30 +30,25 @@ const reducer = (state : {name: string, text: string, rating: number}, action: {
 export const useReviewForm = (initialValue = INITIAL_VALUE) => {
     const [form, dispatch] = useReducer(reducer, initialValue);
 
-    const setName = useCallback(
-        (userName: string) => {
-            dispatch({type: 'setName', payload: userName})
-        },
-        []
-    );
-
     const setText = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-            dispatch({type: 'setText', payload: event.target.value})
+        (value: string) => {
+            dispatch({type: 'setText', payload: value})
         },
         []
     );
 
     const setRating = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) =>{
-            dispatch({type: 'setRating', payload: event.target.value})
+        (value: number) =>{
+            dispatch({type: 'setRating', payload: value})
         },
         []
     );
 
+    const reset = useCallback(() => dispatch({type: 'reset'}), []);
+
     const isFormValidated = useCallback(() => !!form.text && !!form.rating, [form]);
 
     return {
-        form, setName, setText, setRating, isFormValidated
+        form, setText, setRating, isFormValidated, reset
     };
 };
