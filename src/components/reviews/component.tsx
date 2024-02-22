@@ -1,12 +1,15 @@
 import styles from "./styles.module.scss"
-import {ReviewForm} from "../review-form/component.tsx";
+import {ReviewForm} from "./parts/review-form/component.tsx";
 import {useContext} from "react";
 import {UserContext} from "../../contexts/user.tsx";
-import {ReviewController} from "../review/container.tsx";
+import {ReviewController} from "./parts/review/container.tsx";
+import {TNReview} from "../../types/types.ts";
+import {CreateReviewContainer} from "./parts/create-review/container.tsx";
 
-export const Reviews = ({reviewIds, isLoading}: {
-    reviewIds: string[],
-    isLoading: boolean
+export const Reviews = ({reviews, isLoading, restaurantId}: {
+    reviews: TNReview[],
+    isLoading: boolean,
+    restaurantId: string
 }) => {
     const {user} = useContext(UserContext);
 
@@ -21,12 +24,12 @@ export const Reviews = ({reviewIds, isLoading}: {
             <h3>Отзывы</h3>
 
             <ul>
-                {reviewIds.map(reviewId => (
-                    <li key={reviewId}><ReviewController reviewId={reviewId}/></li>
+                {reviews.map(review => (
+                    <li key={review.id}><ReviewController restaurantId={restaurantId} review={review}/></li>
                 ))}
             </ul>
 
-            {user.isAuth && <ReviewForm/>}
+            {user.isAuth && <CreateReviewContainer restaurantId={restaurantId}/>}
         </div>
     );
 }

@@ -1,15 +1,14 @@
 import {Button} from "../button/component.tsx";
 import styles from './styles.module.scss'
 import {ButtonViewType} from "../button/constants.ts";
-import {useContext} from "react";
-import {UserContext} from "../../contexts/user.tsx";
 import {Field} from "../field/component.tsx";
 import {useLoginForm} from "./use-login-form.ts";
+import {TUserCreds} from "../../contexts/user.tsx";
 
-export const LoginModal = ({onClose}: {
+export const LoginModal = ({onClose, onSubmit}: {
     onClose: () => void,
+    onSubmit: (userCreds:TUserCreds) => void
 }) => {
-    const {login} = useContext(UserContext);
     const {form, setUserName, setMail, isFormValidated} = useLoginForm();
 
     return (
@@ -34,7 +33,13 @@ export const LoginModal = ({onClose}: {
                 <div className={styles.buttonGroup}>
                     <Button viewType={ButtonViewType.secondary} onClick={onClose}>Close</Button>
                     <Button disabled={!isFormValidated()} onClick={() => {
-                        login({...form, isAuth: true});
+                        // onSubmit({...form, isAuth: true, userId: crypto.randomUUID()});
+                        onSubmit({
+                            userName: 'Sam',
+                            mail: 'sam@mail.ru',
+                            isAuth: true,
+                            userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
+                        });
 
                         onClose();
                     }}>LogIn</Button>

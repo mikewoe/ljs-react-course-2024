@@ -1,7 +1,6 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
-import {normalizedReviews} from "../../../constants/normilized-mock.ts";
 import {TNReview} from "../../../types/types.ts";
-import {createInitState, TSliceState} from "../../utils.ts";
+import {TSliceState} from "../../utils.ts";
 import {getReviewsByRestaurantId} from "./thunks/get-reviews-by-restaurant-id.ts";
 
 export type TReviewSliceState = TSliceState<TNReview>
@@ -21,6 +20,6 @@ export const reviewSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getReviewsByRestaurantId.fulfilled, (state, {payload}) => {
-                entityAdapter.upsertMany(state, payload);
+                entityAdapter.addMany(state, payload);
             })
 });

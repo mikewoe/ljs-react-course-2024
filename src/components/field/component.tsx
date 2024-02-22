@@ -8,7 +8,8 @@ export const Field = ({
     min = 1,
     max = 5,
     value,
-    onChange
+    onChange,
+    defaultValue
 } : {
     fieldName: string,
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => any,
@@ -16,7 +17,8 @@ export const Field = ({
     type?: string,
     min?: number,
     max?: number,
-    value?: string | number | readonly string[] | undefined
+    value?: string | number | readonly string[] | undefined,
+    defaultValue?: string | number | readonly string[] | undefined
 }) => {
     return <div className={styles.field}>
         <label htmlFor={fieldName}>{labelName}</label>
@@ -25,6 +27,7 @@ export const Field = ({
             type={type}
             min={type === 'number' ? min : undefined}
             max={type === 'number' ? max : undefined}
+            defaultValue={defaultValue}
             value={value}
             onChange={onChange}
         ></input>

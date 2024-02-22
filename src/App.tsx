@@ -1,5 +1,3 @@
-import {Layout} from "./components/layout/component.tsx";
-import {RestaurantsView} from "./components/restaraunts-view/component.tsx";
 import {useCallback, useContext, useState} from "react";
 import {EMPTY_LOGIN, TUserCreds, UserContext} from "./contexts/user.tsx";
 import {Provider} from "react-redux";

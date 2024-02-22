@@ -4,3 +4,5 @@ export const REQUEST_STATUS = {
     fail: 'fail',
     idle: 'idle'
 }
+
+export type RequestStatus = typeof REQUEST_STATUS;

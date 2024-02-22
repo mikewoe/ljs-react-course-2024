@@ -12,13 +12,16 @@ const SizeClass = {
     [Size.xl] : styles.xl,
 }
 
-export const Button = forwardRef(function Button ({onClick, children, className, size = Size.m, viewType = ButtonViewType.primary, disabled = false}: {
-    onClick: MouseEventHandler<HTMLButtonElement>,
-    children?: ReactNode,
-    className?: string,
-    size?: string,
-    viewType?: string,
-    disabled?: boolean,
+export const Button = forwardRef(
+    function Button(
+        {onClick, children, className, size = Size.m, viewType = ButtonViewType.primary, disabled = false, isLoading = false}: {
+            onClick: MouseEventHandler<HTMLButtonElement>,
+            children?: ReactNode,
+            className?: string,
+            size?: string,
+            viewType?: string,
+            disabled?: boolean,
+            isLoading?: boolean
 }, ref) {
     return (
         <button
@@ -26,13 +29,14 @@ export const Button = forwardRef(function Button ({onClick, children, className,
                 styles.root,
                 className,
                 SizeClass[size] || SizeClass[Size.m],
-                styles[viewType]
+                styles[viewType],
+                isLoading ? styles.loading : undefined
             )}
-            disabled={disabled}
+            disabled={disabled || isLoading}
             onClick={onClick}
             ref={ref}
         >
-            {children}
+            {isLoading ? 'Loading' : children}
         </button>
     );
 });

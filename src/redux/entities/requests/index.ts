@@ -7,7 +7,8 @@ export const requestSlice = createSlice({
     reducers: {},
     selectors: {
         selectIsLoading: (state, id: string) => state[id] === REQUEST_STATUS.pending,
-        selectIsLoaded: (state, id: string) => state[id] === REQUEST_STATUS.success
+        selectIsLoaded: (state, id: string) => state[id] === REQUEST_STATUS.success,
+        selectStatus: (state, id: string) => state[id] || REQUEST_STATUS.idle
     },
     extraReducers: (builder) =>
         builder
